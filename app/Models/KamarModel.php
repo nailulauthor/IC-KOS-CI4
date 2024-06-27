@@ -11,12 +11,12 @@ class KamarModel extends Model
     protected $useAutoIncrement = true;
     protected $allowedFields    = ['id_kamar', 'nama_kamar', 'fasilitas', 'deskripsi', 'harga', 'link', 'gambar'];
 
-    public function getkamar($id = false)
+    public function getkamar($nama_kamar = null)
     {
      
-        if ($id == false) {
+        if ($nama_kamar == null) {
             return $this->findAll();
         }
-        return $this->where(['id_kamar' => $id])->first();
+        return $this->where(['nama_kamar',$nama_kamar])->first();
     }
 }

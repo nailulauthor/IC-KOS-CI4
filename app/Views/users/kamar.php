@@ -12,8 +12,10 @@
                     <div class="card-text">
                         <p class="textform1"><strong>fasilitas : </strong> <?= $t['fasilitas']; ?></p>
                         <p class="textform1"><strong>Harga : </strong> Rp. <?= $t['harga']; ?></p>
-                        <button class="btn btn-success" data-bs-toggle="modal"
-                            data-bs-target="#default" >Details</button>
+                        <button id = "detail" class="btn btn-success" data-bs-toggle="modal"
+                            data-bs-target="#default" 
+                            data-nama="<?= $t['nama_kamar']; ?>" data-fasilitas="<?= $t['fasilitas']; ?>" data-deskripsi="<?= $t["deskripsi"] ?>" data-harga="<?= $t["harga"] ?>" data-link="<?= $t["link"] ?>"
+                        >Details</button>
                     </div>
                 </div>
             </div>
@@ -26,42 +28,62 @@
                             <div class="modal-dialog modal-dialog-scrollable" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="myModalLabel1"> Halo </h5>
+                                        <h5 class="modal-title text-center" id="nama"></h5>
                                         <button type="button" class="close rounded-pill" data-bs-dismiss="modal"
                                             aria-label="Close">
                                             <i data-feather="x"></i>
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <p>
-                                            Bonbon caramels muffin. Chocolate bar oat cake cookie pastry dragée pastry.
-                                            Carrot cake
-                                            chocolate tootsie roll chocolate bar candy canes biscuit.
-
-                                            Gummies bonbon apple pie fruitcake icing biscuit apple pie jelly-o sweet
-                                            roll. Toffee sugar
-                                            plum sugar plum jelly-o jujubes bonbon dessert carrot cake. Cookie dessert
-                                            tart muffin topping
-                                            donut icing fruitcake. Sweet roll cotton candy dragée danish Candy canes
-                                            chocolate bar cookie.
-                                            Gingerbread apple pie oat cake. Carrot cake fruitcake bear claw. Pastry
-                                            gummi bears
-                                            marshmallow jelly-o.
-                                        </p>
+                                       <table class="table table-borderless no-margin">
+                                        <tr>
+                                            <th>Fasilitas</th>
+                                            <td><span id="fasilitas"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Deskripsi</th>
+                                            <td><span id="deskripsi"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Harga</th>
+                                            <td><span id="harga"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Video</th>
+                                            <td><span ><a class="btn-link" id="link" href="#">lihat</a></span></td>
+                                        </tr>
+                                       </table>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn" data-bs-dismiss="modal">
                                             <i class="bx bx-x d-block d-sm-none"></i>
                                             <span class="d-none d-sm-block">Close</span>
                                         </button>
-                                        <button type="button" class="btn btn-primary ms-1" data-bs-dismiss="modal">
+                                        <a href="/users/pesan" class="btn btn-primary ms-1">
                                             <i class="bx bx-check d-block d-sm-none"></i>
-                                            <span class="d-none d-sm-block">Accept</span>
-                                        </button>
+                                            <span class="d-none d-sm-block">Pesan</span>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
+<!-- Menampilkan Data di Modal -->
+<script>
+$(document).ready(function () {
+    $(document).on('click', '#detail', function() {
+        var nama = $(this).data('nama');
+        var fasilitas = $(this).data('fasilitas');
+        var deskripsi = $(this).data('deskripsi');
+        var harga = $(this).data('harga');
+        var link = $(this).data('link');
+        $('#nama').text(nama);
+        $('#fasilitas').text(fasilitas);
+        $('#deskripsi').text(deskripsi);
+        $('#harga').text(harga);
+        $('#link').attr('href',link);
+    });
+})
+</script>
 
 <?php $this->endSection()?>
