@@ -9,7 +9,7 @@ class KamarModel extends Model
     protected $table            = 'kamar';
     protected $primaryKey       = 'id_kamar';
     protected $useAutoIncrement = true;
-    protected $allowedFields    = ['id_kamar', 'nama_kamar', 'fasilitas', 'deskripsi', 'harga', 'link', 'gambar'];
+    protected $allowedFields    = ['id_kamar', 'nama_kamar', 'fasilitas', 'deskripsi', 'harga', 'link', 'gambar', 'gambar_2', 'gambar_3'];
 
     public function getkamar($nama_kamar = null)
     {

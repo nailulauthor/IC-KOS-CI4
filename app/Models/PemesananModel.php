@@ -23,7 +23,8 @@ class PemesananModel extends Model
 
     public function joinToKamar()
     {
-        $this->join('kamar', 'kamar.id_kamar = pemesanan.id_kamar')->select('pemesanan.*, kamar.harga');
+        return $this->join('kamar', 'kamar.id_kamar = pemesanan.id_kamar')
+                    ->select('pemesanan.*, kamar.*, DATE_FORMAT(tanggal_masuk,"%d-%m-%Y") As tanggal_masuk,DATE_FORMAT(tanggal_keluar,"%d-%m-%Y") As tanggal_keluar');
     }
 
 }

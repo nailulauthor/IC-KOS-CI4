@@ -1,27 +1,7 @@
 <?php $this->extend('templates/layout') ?>
 <?php $this->section('content') ?>
 
-
-<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
-
 <script>
-    // jQuery untuk menginput value
-    $('#id_kamar').on('change', (event) => {
-        let idKamar = event.target.value;
-
-        $.ajax({
-            url: '/<?= base_url(); ?>/harga/get_harga/' + idKamar,
-            type: 'GET',
-            dataType: 'json',
-            success: function(response) {
-                $('#total').val(response.harga);
-            },
-            error: function(xhr, status, error) {
-                console.error('AJAX Error:', status, error);
-            }
-        });
-    });
-
     // Untuk Meliat preview 
     function tampilgambar() {
         gambar = document.querySelector('#gambar_ktp');
@@ -110,12 +90,6 @@
                                     <div class="form-group">
                                         <label for="tanggal_masuk">Tanggal Masuk</label>
                                         <input type="date" class="form-control <?= array_key_exists('tanggal_masuk', $validation) ? 'is-invalid' : ''; ?>" id="tanggal_masuk" name="tanggal_masuk">
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-12">
-                                    <div class="form-group">
-                                        <label for="tanggal_keluar">Tanggal Keluar</label>
-                                        <input type="date" class="form-control" id="tanggal_keluar" name="tanggal_keluar" value="" disabled>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">

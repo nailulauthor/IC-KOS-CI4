@@ -77,7 +77,7 @@
                         </li>
 
                         <li class="submenu-item  ">
-                            <a href="component-alert.html" class="submenu-link">Pembayaran</a>
+                            <a href="/users/bayar" class="submenu-link">Pembayaran</a>
 
                         </li>
                     </ul>
