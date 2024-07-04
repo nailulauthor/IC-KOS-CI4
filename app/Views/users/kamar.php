@@ -6,7 +6,7 @@
     <?php foreach ($tampil as $t) : ?>
         <div class="col-md-4 mb-3">
             <div class="card">
-                <div class="card-body">
+                <div class="card-body shadow-lg p-2 mb-2">
                     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">

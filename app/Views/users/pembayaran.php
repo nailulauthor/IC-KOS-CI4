@@ -1,6 +1,13 @@
 <?php $this->extend('templates/layout') ?>
 <?php $this->section('content') ?>
 
+<!-- Sweet Alert 2 -->
+<?php
+if (session()->getFlashdata('message')) :
+?>
+    <div class="swal" data-swal="<?= $this->session()->getFlashdata('message') ?>"></div>
+<?php endif; ?>
+
 <!-- Hoverable rows start -->
 <section class="section">
     <div class="row" id="table-hover-row">
@@ -32,19 +39,29 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach ($bayar as $b) : ?>
+                                <?php if (!empty($bayar)) : ?>
+                                    <?php foreach ($bayar as $b) : ?>
+                                        <tr>
+                                            <td><?= $b['nama'] ?></td>
+                                            <td><?= $b['nama_kamar'] ?></td>
+                                            <td><?= $b['tanggal_masuk'] ?></td>
+                                            <td><?= $b['tanggal_keluar'] ?></td>
+                                            <td><?= $b['total'] ?></td>
+                                            <td><a href="#" class="btn btn-success btn-sm btn-circle">Bayar</a></td>
+                                            <td>
+                                                <div class="btn-group">
+                                                    <a href="#" class="btn btn-primary btn-sm" id="detail" data-bs-toggle="modal" data-bs-target="#default" data-nama="<?= $b['nama']; ?>" data-nik="<?= $b['nik']; ?>" data-alamat="<?= $b['alamat']; ?>" data-telepon="<?= $b['telepon']; ?>" data-gambar="<?= $b['gambar_ktp']; ?>" data-total="<?= $b['total']; ?>" data-tanggal_masuk="<?= $b['tanggal_masuk'] ?>" data-kamar="<?= $b['nama_kamar'] ?>" data-tanggal_keluar="<?= $b['tanggal_keluar'] ?>"><i class="bi bi-eye" data-feather="eye"></i></a>
+                                                    <a href="#" class="btn btn-warning btn-sm"><i class="bi bi-pencil-square" data-feather="pencil-square"></i></a>
+                                                    <a href="/users/delete/<?= $b['id_pemesanan'] ?>" onclick="return confirm('Apakah yakin akan hapus <?= $b['nama'] ?>?');" class="btn btn-danger btn-sm"><i class="bi bi-trash" data-feather="trash"></i></a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                <?php else : ?>
                                     <tr>
-                                        <td><?= $b['nama'] ?></td>
-                                        <td><?= $b['nama_kamar'] ?></td>
-                                        <td><?= $b['tanggal_masuk'] ?></td>
-                                        <td><?= $b['tanggal_keluar'] ?></td>
-                                        <td><?= $b['total'] ?></td>
-                                        <td><a href="#" class="btn btn-success btn-sm btn-circle" >Bayar</a></td>
-                                        <td><a href="#"><i class="bi bi-pen-fill mx-1" data-feather="pen-fill"></i></a>
-                                            <a href="#" id="detail" data-bs-toggle="modal" data-bs-target="#default" data-nama="<?= $b['nama']; ?>" data-nik="<?= $b['nik']; ?>" data-alamat="<?= $b['alamat']; ?>" data-telepon="<?= $b['telepon']; ?>" data-gambar="<?= $b['gambar_ktp']; ?>" data-total="<?= $b['total']; ?>" data-tanggal_masuk="<?= $b['tanggal_masuk'] ?>" data-kamar="<?= $b['nama_kamar'] ?>" data-tanggal_keluar="<?= $b['tanggal_keluar'] ?>"><i class="bi bi-info-circle-fill mx-1" data-feather="info-circle-fill"></i></a>
-                                            <a href="#"><i class="bi bi-trash-fill mx-1" data-feather="trash-fill"></i></a>
-                                        </td>
+                                        <td colspan="7" class="text-center">Tidak ada data</td>
                                     </tr>
+                                <?php endif; ?>
                             </tbody>
                         </table>
                     </div>
@@ -53,19 +70,20 @@
         </div>
     </div>
 </section>
-<?php endforeach; ?>
 <!-- Hoverable rows end -->
+
 
 <!-- Modal Start -->
 <div class="modal fade" id="default" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable" role="document">
         <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close rounded-pill" data-bs-dismiss="modal" aria-label="Close">
+            <div class="modal-header bg-light text-dark">
+                <h5 class="modal-title text-center" id="nama"></h5>
+                <button type="button" class="close rounded-pill text-light" data-bs-dismiss="modal" aria-label="Close">
                     <i data-feather="x"></i>
                 </button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body bg-light text-dark">
                 <div class="card mb-3 border-2">
                     <img src="#" id="gambar" class="img-fluid  rounded-3" alt="Gambar KTP" style="max-height: 200px;">
                 </div>
@@ -73,10 +91,6 @@
                     <tr>
                         <th>NIK</th>
                         <td><span id="nik"></span></td>
-                    </tr>
-                    <tr>
-                        <th>Nama</th>
-                        <td><span id="nama"></span></td>
                     </tr>
                     <tr>
                         <th>Alamat</th>
@@ -96,12 +110,12 @@
                     </tr>
                     <tr>
                         <th>Total</th>
-                        <td><span id="Total"></span></td>
+                        <td><span id="total"></span></td>
                     </tr>
                 </table>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn" data-bs-dismiss="modal">
+            <div class="modal-footer bg-light">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
                     <i class="bx bx-x d-block d-sm-none"></i>
                     <span class="d-none d-sm-block">Close</span>
                 </button>
@@ -134,6 +148,13 @@
             $('#tanggal_keluar').text(tanggal_keluar);
             $('#total').text(total);
             $('#gambar').attr('src', '<?= base_url() ?>/assets/img-ktp/' + gambar);
+
+              // Menampilkan tabel hanya jika ada data
+              if (nik && nama && alamat && nama_kamar && tanggal_masuk && tanggal_keluar && total) {
+                $('#modal-table').show();
+            } else {
+                $('#modal-table').hide();
+            }
         });
     })
 </script>

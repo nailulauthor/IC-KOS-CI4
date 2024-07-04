@@ -25,13 +25,13 @@
                 </div>
                 <div class="card-content">
                     <div class="card-body">
-                        <form class="form" method="post" action="/admin/simpan" enctype="multipart/form-data">
+                        <form class="form" method="post" action="/users/simpan" enctype="multipart/form-data">
                             <?= csrf_field(); ?>
                             <div class="row">
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <label for="last-name-column">NIK</label>
-                                        <input type="text" id="nik" class="form-control <?= array_key_exists('nik', $validation) ? 'is-invalid' : ''; ?>" placeholder="Number ID Card" name="nik">
+                                        <input type="text" id="nik" value="<?= set_value('nik') ?>" class="form-control <?= array_key_exists('nik', $validation) ? 'is-invalid' : ''; ?>" placeholder="Number ID Card" name="nik">
                                         <div class="invalid-feedback">
                                             <?= array_key_exists('nik', $validation) ? $validation['nik'] : ''; ?>
                                         </div>
@@ -40,7 +40,7 @@
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <label for="first-name-column">Nama Lengkap</label>
-                                        <input type="text" id="nama" class="form-control <?= array_key_exists('nama', $validation) ? 'is-invalid' : ''; ?>" placeholder="Full Name" name="nama">
+                                        <input type="text" id="nama" value="<?= set_value('nama') ?>" class="form-control <?= array_key_exists('nama', $validation) ? 'is-invalid' : ''; ?>" placeholder="Full Name" name="nama">
                                         <div class="invalid-feedback">
                                             <?= array_key_exists('nama', $validation) ? $validation['nama'] : ''; ?>
                                         </div>
@@ -49,7 +49,7 @@
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <label for="city-column">Alamat</label>
-                                        <input type="text" id="alamat" class="form-control <?= array_key_exists('alamat', $validation) ? 'is-invalid' : ''; ?>" placeholder="Address" name="alamat">
+                                        <input type="text" id="alamat" class="form-control <?= array_key_exists('alamat', $validation) ? 'is-invalid' : ''; ?>" placeholder="Address" name="alamat" value="<?= set_value('alamat') ?>">
                                         <div class="invalid-feedback">
                                             <?= array_key_exists('alamat', $validation) ? $validation['alamat'] : ''; ?>
                                         </div>
@@ -58,7 +58,7 @@
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <label for="country-floating">Telepon</label>
-                                        <input type="text" id="telepon" class="form-control <?= array_key_exists('telepon', $validation) ? 'is-invalid' : ''; ?>" name="telepon" placeholder="Telephone">
+                                        <input type="text" id="telepon" value="<?= set_value('telepon') ?>" class="form-control <?= array_key_exists('telepon', $validation) ? 'is-invalid' : ''; ?>" name="telepon" placeholder="Telephone">
                                         <div class="invalid-feedback">
                                             <?= array_key_exists('telepon', $validation) ? $validation['telepon'] : ''; ?>
                                         </div>
@@ -67,11 +67,11 @@
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <label for="company-column">Kelas Kamar</label>
-                                        <select class="form-select <?= array_key_exists('id_kamar', $validation) ? 'is-invalid' : ''; ?>" aria-label="select example" name="id_kamar" id="id_kamar">
+                                        <select class="form-select <?= array_key_exists('id_kamar', $validation) ? 'is-invalid' : ''; ?>"  aria-label="select example" name="id_kamar" id="id_kamar">
                                             <option selected>Select Class Room</option>
                                             <!-- Start Foreach / perulangan kamar -->
                                             <?php foreach ($kamar as $k) : ?>
-                                                <option value="<?= $k['id_kamar'] ?>"><?= $k['nama_kamar'] ?></option>
+                                                <option value="<?= $k['id_kamar']; ?>"><?= $k['nama_kamar'] ?></option>
                                             <?php endforeach; ?>
                                             <!-- End Foreach -->
                                         </select>
@@ -89,7 +89,7 @@
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <label for="tanggal_masuk">Tanggal Masuk</label>
-                                        <input type="date" class="form-control <?= array_key_exists('tanggal_masuk', $validation) ? 'is-invalid' : ''; ?>" id="tanggal_masuk" name="tanggal_masuk">
+                                        <input type="date" value="<?= set_value('tanggal_masuk') ?>" class="form-control <?= array_key_exists('tanggal_masuk', $validation) ? 'is-invalid' : ''; ?>" id="tanggal_masuk" name="tanggal_masuk">
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
@@ -106,7 +106,7 @@
                                 </div>
                                 <div class="col-12 d-flex justify-content-end">
                                     <button type="submit" class="btn btn-primary me-1 mb-1">Simpan</button>
-                                    <button type="reset" class="btn btn-light-secondary me-1 mb-1">Reset</button>
+                                    <button type="reset" class="btn btn-danger me-1 mb-1">Reset</button>
                                 </div>
                             </div>
                         </form>
