@@ -14,12 +14,16 @@
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Red+Rose:wght@600;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Red+Rose:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Recursive:wght@300..1000&display=swap" rel="stylesheet">
+
 
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://fontawesome.com/icons/instagram?f=brands&s=solid">
+
 
     <!-- Libraries Stylesheet -->
     <link href="<?= base_url() ?>/assets/lib/animate/animate.min.css" rel="stylesheet">
@@ -34,8 +38,7 @@
 
 <body>
     <!-- Spinner Start -->
-    <div id="spinner"
-        class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
         <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;"></div>
     </div>
     <!-- Spinner End -->
@@ -49,12 +52,6 @@
                     <small class="me-3"><i class="fa fa-map-marker-alt me-2"></i>Pekalongan, Jawa Tengah, Indonesia</small>
                     <small class="me-3"><i class="fa fa-clock me-2"></i>Mon-Sat 09am-5pm, Sun Closed</small>
                 </div>
-                <nav class="breadcrumb mb-0">
-                    <a class="breadcrumb-item small text-body" href="#">Career</a>
-                    <a class="breadcrumb-item small text-body" href="#">Support</a>
-                    <a class="breadcrumb-item small text-body" href="#">Terms</a>
-                    <a class="breadcrumb-item small text-body" href="#">FAQs</a>
-                </nav>
             </div>
         </div>
     </div>
@@ -69,7 +66,7 @@
                     <i class="bi bi-telephone-inbound fs-2"></i>
                     <div class="ms-3">
                         <h5 class="text-white mb-0">Call Now</h5>
-                        <span>+012 345 6789</span>
+                        <span>+89677195688</span>
                     </div>
                 </div>
                 <a href="index.html" class="h1 text-white mb-0">IC - <span class="text-dark">KOS</span></a>
@@ -77,7 +74,7 @@
                     <i class="bi bi-envelope fs-2"></i>
                     <div class="ms-3">
                         <h5 class="text-white mb-0">Mail Now</h5>
-                        <span>info@example.com</span>
+                        <span>ickos.pekalongan@gmail.com</span>
                     </div>
                 </div>
             </div>
@@ -91,10 +88,9 @@
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light bg-white py-lg-0 px-lg-3">
                 <a href="index.html" class="navbar-brand d-lg-none">
-                    <h1 class="text-primary m-0">Lab<span class="text-dark">sky</span></h1>
+                    <h1 class="text-primary m-0">IC<span class="text-dark">Kos</span></h1>
                 </a>
-                <button type="button" class="navbar-toggler me-0" data-bs-toggle="collapse"
-                    data-bs-target="#navbarCollapse">
+                <button type="button" class="navbar-toggler me-0" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -102,22 +98,12 @@
                         <a href="/" class="nav-item nav-link">Home</a>
                         <a href="/home/about" class="nav-item nav-link">About</a>
                         <a href="/home/contact" class="nav-item nav-link">Contact</a>
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                            <div class="dropdown-menu bg-light m-0">
-                                <a href="feature.html" class="dropdown-item">Features</a>
-                                <a href="team.html" class="dropdown-item">Our Team</a>
-                                <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                                <a href="appoinment.html" class="dropdown-item">Appoinment</a>
-                                <a href="404.html" class="dropdown-item">404 Page</a>
-                            </div>
-                        </div>
                     </div>
                     <div class="ms-auto d-none d-lg-flex">
-                        <a class="btn btn-sm-square btn-primary ms-2" href=""><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-sm-square btn-primary ms-2" href="https://www.instagram.com/ic.kos/"><i class="fab fa-instagram"></i></a>
                         <a class="btn btn-sm-square btn-primary ms-2" href=""><i class="fab fa-twitter"></i></a>
                         <a class="btn btn-sm-square btn-primary ms-2" href=""><i class="fab fa-linkedin-in"></i></a>
-                        <a class="btn btn-sm-square btn-primary ms-2" href=""><i class="fab fa-youtube"></i></a>
+                        <a class="btn btn-sm-square btn-primary ms-2" href="https://www.youtube.com/@ickos-t5j"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
             </nav>
@@ -126,7 +112,7 @@
     <!-- Navbar End -->
 
     <!-- Merender section template -->
-        <?= $this->renderSection('content'); ?>
+    <?= $this->renderSection('content'); ?>
 
     <!-- Footer Start -->
     <div class="container-fluid footer position-relative bg-dark text-white-50 py-5 wow fadeIn" data-wow-delay="0.1s">
@@ -134,20 +120,20 @@
             <div class="row g-5 py-5">
                 <div class="col-lg-6 pe-lg-5">
                     <a href="index.html" class="navbar-brand">
-                        <h1 class="h1 text-primary mb-0">Lab<span class="text-white">sky</span></h1>
+                        <h1 class="h1 text-primary mb-0">IC<span class="text-white">Kos</span></h1>
                     </a>
-                    <p class="fs-5 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tellus augue, iaculis id elit eget, ultrices pulvinar tortor.</p>
-                    <p><i class="fa fa-map-marker-alt me-2"></i>123 Street, New York, USA</p>
-                    <p><i class="fa fa-phone-alt me-2"></i>+012 345 67890</p>
-                    <p><i class="fa fa-envelope me-2"></i>info@example.com</p>
+                    <p class="fs-5 mb-4">Tingkatkan Kualitas Hidup Anda dengan Kemudahan Mencari dan Menyewa Kos-kosan Melalui Platform Website Kami!</p>
+                    <p><i class="fa fa-map-marker-alt me-2"></i>Pekalongan, Jawa Tengah, Indonesia</p>
+                    <p><i class="fa fa-phone-alt me-2"></i>+89677195688</p>
+                    <p><i class="fa fa-envelope me-2"></i>ickos.pekalongan@gmail.com</p>
                     <div class="d-flex mt-4">
                         <a class="btn btn-lg-square btn-primary me-2" href="#"><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-lg-square btn-primary me-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-lg-square btn-primary me-2" href="https://www.youtube.com/@ickos-t5j"><i class="fab fa-youtube"></i></a>
                         <a class="btn btn-lg-square btn-primary me-2" href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a class="btn btn-lg-square btn-primary me-2" href="#"><i class="fab fa-instagram"></i></a>
+                        <a class="btn btn-lg-square btn-primary me-2" href="https://www.instagram.com/ic.kos/"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
-                <div class="col-lg-6 ps-lg-5">
+                <!-- <div class="col-lg-6 ps-lg-5">
                     <div class="row g-5">
                         <div class="col-sm-6">
                             <h4 class="text-light mb-4">Quick Links</h4>
@@ -174,7 +160,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
@@ -187,10 +173,6 @@
             <div class="row">
                 <div class="col-md-6 text-center text-md-start">
                     <p class="mb-0">&copy; <a href="#">IC-KOS Team</a>. All Rights Reserved.</p>
-                </div>
-                <div class="col-md-6 text-center text-md-end">
-                    <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                    <p class="mb-0">Designed by <a href="https://htmlcodex.com">HTML Codex</a><br>Distributed by <a href="https://themewagon.com">ThemeWagon</a></p>
                 </div>
             </div>
         </div>
